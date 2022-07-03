@@ -4,7 +4,7 @@ import {
   GET_ALL_NOTES,
   GET_TAGS_AND_ENTITIES,
 } from '../../services/Apollo/Queries';
-import './Explorer.css';
+import './Explorer.module.css';
 export type ExplorerProps = {
   value: string;
   placeholder: string;
@@ -14,10 +14,10 @@ export type ExplorerProps = {
 };
 
 export const Explorer: FC<ExplorerProps> = () => {
-  const { data: notesData } = useQuery(GET_ALL_NOTES);
-  const { data: tagAndEntitiesData } = useQuery(GET_TAGS_AND_ENTITIES);
-  console.log('notesData::', notesData);
-  console.log('tagAndEntitiesData::', tagAndEntitiesData);
+  // const { data: notesData } = useQuery(GET_ALL_NOTES);
+  // const { data: tagAndEntitiesData } = useQuery(GET_TAGS_AND_ENTITIES);
+  // console.log('notesData::', notesData);
+  // console.log('tagAndEntitiesData::', tagAndEntitiesData);
   return <div className="explorer">explorer test from github</div>;
 };
 
