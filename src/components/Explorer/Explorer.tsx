@@ -1,10 +1,13 @@
 import React, { FC } from 'react';
-import { useQuery } from '@apollo/client';
-import {
-  GET_ALL_NOTES,
-  GET_TAGS_AND_ENTITIES,
-} from '../../services/Apollo/Queries';
-import './Explorer.module.css';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+
+// import './Explorer.module.css';
+// import client from '../../services/Apollo/ApoloClient';
+import Search from './Search';
+const client = new ApolloClient({
+  cache: new InMemoryCache(),
+  uri: 'http://localhost:3000/api/graphql',
+})
 export type ExplorerProps = {
   value: string;
   placeholder: string;
@@ -14,12 +17,12 @@ export type ExplorerProps = {
 };
 
 export const Explorer: FC<ExplorerProps> = () => {
-  // const { data: notesData } = useQuery(GET_ALL_NOTES);
-  // const { data: tagAndEntitiesData } = useQuery(GET_TAGS_AND_ENTITIES);
-  // console.log('notesData::', notesData);
-  // console.log('tagAndEntitiesData::', tagAndEntitiesData);
-  return <div className="explorer">explorer test from github</div>;
+
+  return (
+    <ApolloProvider client={client}>
+      <Search />
+    </ApolloProvider>
+  );
 };
 
 export default Explorer;
-
