@@ -36,8 +36,8 @@
   },
   "name": "@chainverse/os",
   "repository": {
-		"url": "git://github.com/DiamondDAO/chainverse-os.git"
-	},
+    "url": "git://github.com/DiamondDAO/chainverse-os.git"
+  },
   "author": "Jose Zena Zamora",
   "module": "dist/chainverse-os.esm.js",
   "size-limit": [
@@ -63,5 +63,8 @@
     "tsdx": "^0.14.1",
     "tslib": "^2.4.0",
     "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.6.9"
   }
 }

@@ -9,7 +9,7 @@ export type ExplorerProps = {
 }
 
 export const Explorer: FC<ExplorerProps> = () => {
-  return <div className='explorer'>explorer test</div>;
+  return <div className='explorer'>explorer test from github</div>;
 };
 
 export default Explorer;
