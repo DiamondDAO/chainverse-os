@@ -14,7 +14,7 @@ const Search: FC<SearchProps> = () => {
   const { data: tagAndEntitiesData } = useQuery(GET_TAGS_AND_ENTITIES);
   console.log('notesData::', notesData);
   console.log('tagAndEntitiesData::', tagAndEntitiesData);
-  return ( <div className="explorer">explorer test from github</div> );
+  return ( <div className="flex bg-gray-400 flex">explorer test from github 2</div> );
 }
  
 export default Search;

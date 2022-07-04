@@ -12,16 +12,18 @@
     "node": ">=14"
   },
   "scripts": {
-    "start": "tsdx watch",
-    "build": "tsdx build",
+    "start": "parcel ./playground/index.html",
+    "start2": "tsdx watch",
+    "build": "tsdx build && yarn build-tailwind",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "size": "size-limit",
-    "analyze": "size-limit --why"
+    "analyze": "size-limit --why",
+    "build-tailwind": "NODE_ENV=production npx tailwindcss -i ./tailwind.css -o ./dist/chainverse-os.css --minify"
   },
   "peerDependencies": {
-    "react": ">=16"
+    "react": ">=17"
   },
   "husky": {
     "hooks": {
@@ -52,19 +54,27 @@
   ],
   "devDependencies": {
     "@size-limit/preset-small-lib": "^7.0.8",
-    "@types/react": "^18.0.14",
-    "@types/react-dom": "^18.0.5",
+    "@types/react": "^17.0.37",
+    "@types/react-dom": "^17.0.11",
+    "autoprefixer": "^10.4.7",
     "husky": "^8.0.1",
     "identity-obj-proxy": "^3.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",    
+    "parcel": "^2.0.1",
+    "postcss": "^8.4.14",
+    "postcss-custom-properties": "^12.1.8",
+    "postcss-url": "^10.1.3",
+    "process": "^0.11.10",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "size-limit": "^7.0.8",
+    "tailwindcss": "^3.1.4",
     "tsdx": "^0.14.1",
     "tslib": "^2.4.0",
     "typescript": "^4.7.4"
   },
   "dependencies": {
     "@apollo/client": "^3.5.8",
-    "rollup-plugin-postcss": "^4.0.2"
+    "@tailwindcss/forms": "^0.4.0",
+    "@tailwindcss/typography": "^0.5.0"
   }
 }
