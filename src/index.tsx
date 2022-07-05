@@ -1,1 +1,1 @@
-export * from './components/Explorer'
+export * from './components/Search'
