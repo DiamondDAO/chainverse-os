@@ -16,7 +16,6 @@ export interface SearchOSProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const SearchOS: FC<SearchOSProps> = (props: SearchOSProps) => {
-  console.log('props::', props)
   return (
     <>
       <ApolloProvider client={client}>
