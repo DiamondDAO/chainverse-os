@@ -17,9 +17,11 @@ export interface SearchProps extends HTMLAttributes<HTMLDivElement> {
 
 export const Search: FC<SearchProps> = (props: SearchProps) => {
   return (
-    <ApolloProvider client={client}>
-      <SearchComponent {...props}/>
-    </ApolloProvider>
+    <>
+      <ApolloProvider client={client}>
+        <SearchComponent {...props} />
+      </ApolloProvider>
+    </>
   );
 };
 
