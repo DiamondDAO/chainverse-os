@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import * as ReactDOM from 'react-dom';
-import { Search } from '../src/index';
+import { SearchOS } from '../src/index';
 import ReactJson from 'react-json-view';
 import '../dist/chainverse-os.css';
 
@@ -8,7 +8,7 @@ const App = () => {
   const [data, setData] = useState({});
   return (
     <div className="mx-auto w-[70%] space-y-5">
-      <Search
+      <SearchOS
         value="test"
         onChange={e => console.log(e)}
         onChangeType={e => setData(e)}

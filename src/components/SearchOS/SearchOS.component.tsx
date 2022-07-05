@@ -15,15 +15,14 @@ import {
   useGetEntityTableData,
   useGetTagsTableData,
 } from '../../hooks/search';
-import { SearchProps } from './Search';
-
+import { SearchOSProps } from './SearchOS';
 enum SearchTypes {
   Blocks = 'blocks',
   Tags = 'tags',
   Entities = 'entities',
 }
 
-const SearchComponent: FC<SearchProps> = (props: SearchProps) => {
+const SearchComponent: FC<SearchOSProps> = (props: SearchOSProps) => {
   // graphql
   const { data: notesData, loading: loadingNotes } = useQuery(GET_ALL_CREATED);
   const { data: tagAndEntitiesData, loading: loadingEntityTag } = useQuery(

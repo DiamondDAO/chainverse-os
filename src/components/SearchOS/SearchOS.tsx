@@ -1,12 +1,12 @@
 import React, { FC, HTMLAttributes } from 'react';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
-import SearchComponent from './Search.component';
+import SearchComponent from './SearchOS.component';
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   uri: 'http://localhost:3000/api/graphql',
 });
-export interface SearchProps extends HTMLAttributes<HTMLDivElement> {
+export interface SearchOSProps extends HTMLAttributes<HTMLDivElement> {
   value: string;
   placeholder: string;
   onChange: any;
@@ -15,7 +15,7 @@ export interface SearchProps extends HTMLAttributes<HTMLDivElement> {
   onFocus: any;
 }
 
-export const Search: FC<SearchProps> = (props: SearchProps) => {
+export const SearchOS: FC<SearchOSProps> = (props: SearchOSProps) => {
   return (
     <>
       <ApolloProvider client={client}>
@@ -25,4 +25,4 @@ export const Search: FC<SearchProps> = (props: SearchProps) => {
   );
 };
 
-export default Search;
+export default SearchOS;
