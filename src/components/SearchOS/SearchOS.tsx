@@ -1,11 +1,11 @@
 import React, { FC, HTMLAttributes } from 'react';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+// import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
-import SearchComponent from './SearchOS.component';
-const client = new ApolloClient({
-  cache: new InMemoryCache(),
-  uri: 'http://localhost:3000/api/graphql',
-});
+// import SearchComponent from './SearchOS.component';
+// const client = new ApolloClient({
+//   cache: new InMemoryCache(),
+//   uri: 'http://localhost:3000/api/graphql',
+// });
 export interface SearchOSProps extends HTMLAttributes<HTMLDivElement> {
   value: string;
   placeholder: string;
@@ -16,11 +16,13 @@ export interface SearchOSProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const SearchOS: FC<SearchOSProps> = (props: SearchOSProps) => {
+  console.log('props::', props)
   return (
     <>
-      <ApolloProvider client={client}>
+      {/* <ApolloProvider client={client}>
         <SearchComponent {...props} />
-      </ApolloProvider>
+      </ApolloProvider> */}
+      test jzena
     </>
   );
 };
