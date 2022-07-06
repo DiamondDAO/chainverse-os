@@ -17,7 +17,7 @@
     "build": "tsdx build && yarn build-tailwind",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
-    "prepare": "tsdx build",
+    "prepare": "tsdx build && yarn build-tailwind",
     "size": "size-limit",
     "analyze": "size-limit --why",
     "build-tailwind": "NODE_ENV=production npx tailwindcss -i ./tailwind.css -o ./dist/chainverse-os.css --minify"
