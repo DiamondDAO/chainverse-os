@@ -1,14 +1,9 @@
 // components
-export * from './components/SearchOS'
-
+export * from './components/SearchOS';
 
 // schemas
-import { typeDefs as typeDefinitions} from './services/Apollo/typedefs'
-import * as queries from './services/Apollo/Queries'
-import * as mutations from './services/Apollo/Mutations'
+export * from './services/Apollo/typedefs';
+import * as queries from './services/Apollo/Queries';
+import * as mutations from './services/Apollo/Mutations';
 
-export {
-  typeDefinitions,
-  queries,
-  mutations
-}
+export { queries, mutations };
