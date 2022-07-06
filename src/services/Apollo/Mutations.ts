@@ -1,7 +1,7 @@
-import { gql } from "@apollo/client";
+import { DocumentNode, gql } from "@apollo/client";
 
 // Create
-export const CREATE_NOTES = gql`
+export const CREATE_NOTES: DocumentNode = gql`
   mutation CreateNotes($input: [NoteCreateInput!]!) {
     createNotes(input: $input) {
       notes {
@@ -23,7 +23,7 @@ export const CREATE_NOTES = gql`
   }
 `;
 
-export const CREATE_PARTNERSHIPS = gql`
+export const CREATE_PARTNERSHIPS: DocumentNode = gql`
   mutation CreatePartnerships($input: [PartnershipCreateInput!]!) {
     createPartnerships(input: $input) {
       partnerships {
@@ -41,7 +41,7 @@ export const CREATE_PARTNERSHIPS = gql`
   }
 `;
 
-export const CREATE_RESPONSES = gql`
+export const CREATE_RESPONSES: DocumentNode = gql`
   mutation CreateResponses($input: [ResponseCreateInput!]!) {
     createResponses(input: $input) {
       responses {
@@ -57,7 +57,7 @@ export const CREATE_RESPONSES = gql`
   }
 `;
 
-export const CREATE_WALLETS = gql`
+export const CREATE_WALLETS: DocumentNode = gql`
   mutation CreateWallets($input: [WalletCreateInput!]!) {
     createWallets(input: $input) {
       wallets {
@@ -67,7 +67,7 @@ export const CREATE_WALLETS = gql`
   }
 `;
 
-export const CREATE_WORKSPACES = gql`
+export const CREATE_WORKSPACES: DocumentNode = gql`
   mutation CreateWorkspaces($input: [WorkspaceCreateInput!]!) {
     createWorkspaces(input: $input) {
       workspaces {
@@ -80,7 +80,7 @@ export const CREATE_WORKSPACES = gql`
   }
 `;
 
-export const CREATE_ENTITIES = gql`
+export const CREATE_ENTITIES: DocumentNode = gql`
   mutation CreateEntities($input: [EntityCreateInput!]!) {
     createEntities(input: $input) {
       entities {
@@ -108,7 +108,7 @@ export const CREATE_ENTITIES = gql`
   }
 `;
 
-export const ADD_SANDBOX_TO_WALLET = gql`
+export const ADD_SANDBOX_TO_WALLET: DocumentNode = gql`
   mutation UpdateWallets(
     $where: WalletWhere
     $connectOrCreate: WalletConnectOrCreateInput
@@ -143,7 +143,7 @@ export const ADD_SANDBOX_TO_WALLET = gql`
 `;
 
 // UPDATE
-export const UPDATE_SANDBOX = gql`
+export const UPDATE_SANDBOX: DocumentNode = gql`
   mutation UpdateSandboxes(
     $where: SandboxWhere
     $connect: SandboxConnectInput
@@ -156,7 +156,7 @@ export const UPDATE_SANDBOX = gql`
   }
 `;
 
-export const UPDATE_NOTES = gql`
+export const UPDATE_NOTES: DocumentNode = gql`
   mutation UpdateNotes(
     $update: NoteUpdateInput
     $where: NoteWhere
@@ -182,7 +182,7 @@ export const UPDATE_NOTES = gql`
   }
 `;
 
-export const UPDATE_PARTNERSHIPS = gql`
+export const UPDATE_PARTNERSHIPS: DocumentNode = gql`
 mutation UpdatePartnerships(
   $update: PartnershipUpdateInput
   $where: PartnershipWhere
@@ -206,7 +206,7 @@ mutation UpdatePartnerships(
 }
 `;
 
-export const UPDATE_ENTITIES = gql`
+export const UPDATE_ENTITIES: DocumentNode = gql`
 mutation UpdateEntities(
   $update: EntitypUpdateInput
   $where: EntityWhere
@@ -238,7 +238,7 @@ mutation UpdateEntities(
 `;
 
 
-export const UPDATE_WORKSPACE = gql`
+export const UPDATE_WORKSPACE: DocumentNode = gql`
   mutation Mutation(
     $where: WorkspaceWhere
     $update: WorkspaceUpdateInput
@@ -252,7 +252,7 @@ export const UPDATE_WORKSPACE = gql`
   }
 `;
 // DELETE
-export const DELETE_NOTES = gql`
+export const DELETE_NOTES: DocumentNode = gql`
   mutation DeleteNotes($where: NoteWhere) {
     deleteNotes(where: $where) {
       nodesDeleted
@@ -261,7 +261,7 @@ export const DELETE_NOTES = gql`
   }
 `;
 
-export const DELETE_PARTNERSHIPS = gql`
+export const DELETE_PARTNERSHIPS: DocumentNode = gql`
   mutation DeletePartnerships($where: PartnershipWhere) {
     deletePartnerships(where: $where) {
       nodesDeleted
@@ -270,7 +270,7 @@ export const DELETE_PARTNERSHIPS = gql`
   }
 `;
 
-export const DELETE_WORKSPACE = gql`
+export const DELETE_WORKSPACE: DocumentNode = gql`
   mutation DeleteWorkspaces($where: WorkspaceWhere) {
     deleteWorkspaces(where: $where) {
       nodesDeleted
@@ -279,7 +279,7 @@ export const DELETE_WORKSPACE = gql`
   }
 `;
 
-export const DELETE_ENTITIES = gql`
+export const DELETE_ENTITIES: DocumentNode = gql`
   mutation DeleteEntities($where: EntityWhere) {
     deleteEntities(where: $where) {
       nodesDeleted
@@ -288,7 +288,7 @@ export const DELETE_ENTITIES = gql`
   }
 `;
 
-export const RESET_SANDBOX = gql`
+export const RESET_SANDBOX: DocumentNode = gql`
   mutation UpdateSandboxes($disconnect: SandboxDisconnectInput) {
     updateSandboxes(disconnect: $disconnect) {
       info {
