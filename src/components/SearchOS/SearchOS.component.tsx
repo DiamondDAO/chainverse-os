@@ -16,7 +16,7 @@ import {
   useGetTagsTableData,
 } from '../../hooks/search';
 import { SearchOSProps } from './SearchOS';
-enum SearchTypes {
+export enum SearchTypes {
   Blocks = 'blocks',
   Tags = 'tags',
   Entities = 'entities',
