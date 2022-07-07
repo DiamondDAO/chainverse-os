@@ -1,6 +1,11 @@
 {
   "version": "0.1.0",
   "license": "MIT",
+  "name": "@chainverse/os",
+  "repository": {
+    "url": "git://github.com/DiamondDAO/chainverse-os.git"
+  },
+  "author": "Jose Zena Zamora",
   "main": "dist/index.js",
   "source": "src/index.tsx",
   "typings": "dist/index.d.ts",
@@ -36,11 +41,6 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@chainverse/os",
-  "repository": {
-    "url": "git://github.com/DiamondDAO/chainverse-os.git"
-  },
-  "author": "Jose Zena Zamora",
   "module": "dist/chainverse-os.esm.js",
   "size-limit": [
     {
