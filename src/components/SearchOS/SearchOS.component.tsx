@@ -115,7 +115,7 @@ const SearchComponent: FC<SearchOSProps> = (props: SearchOSProps) => {
   const handleOnChangeType = (type: SearchTypes) => {
     setSearchType(type);
     props.onChangeType({
-      type,
+      searchType: type,
       entity: entityResponse,
       tags: tagresponse,
       blocks: blockResponse,
