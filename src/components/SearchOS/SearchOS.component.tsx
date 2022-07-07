@@ -150,8 +150,8 @@ const SearchComponent: FC<SearchOSProps> = (
 
   const classActive = 'bg-[#95438d] text-white';
   return (
-    <div className="flex bg-white flex justify-center items-center space-x-2">
-      <div className="flex border rounded items-center px-2 shadow">
+    <div className="flex bg-white flex justify-center items-center space-x-2 w-[100%]">
+      <div className="flex border rounded items-center px-4 shadow flex-grow">
         {isLoading ? (
           <Spinner color="darkBlue"></Spinner>
         ) : (
@@ -162,7 +162,7 @@ const SearchComponent: FC<SearchOSProps> = (
           value={term}
           onChange={handleOnChange}
           onKeyPress={handleOnKeyPress}
-          className="border-none"
+          className="border-none w-[100%]"
           placeholder="Start with a search for any keyword, community name, or user"
         />
       </div>
