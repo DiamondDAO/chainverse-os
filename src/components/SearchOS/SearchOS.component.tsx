@@ -116,6 +116,9 @@ const SearchComponent: FC<SearchOSProps> = (
   });
 
   // handlers
+  const handleOnfocus = () => {
+    props.onFocus()
+  }
   const handleOnChangeType = (type: SearchTypes) => {
     setSearchType(type);
     props.onChangeType({
@@ -162,6 +165,7 @@ const SearchComponent: FC<SearchOSProps> = (
           value={term}
           onChange={handleOnChange}
           onKeyPress={handleOnKeyPress}
+          onFocus={handleOnfocus}
           className="border-none w-[100%]"
           placeholder="Start with a search for any keyword, community name, or user"
         />
