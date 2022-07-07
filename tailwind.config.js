@@ -14,7 +14,10 @@ module.exports = {
       fontFamily: {
         sans: ['Rubik', ...defaultTheme.fontFamily.sans],
 				mono: ['Roboto Mono', ...defaultTheme.fontFamily.mono],
-      }
+      },
+      animation: {
+				spin: 'spin 600ms linear infinite',
+			},
     },
   },
   plugins: [typography, forms],

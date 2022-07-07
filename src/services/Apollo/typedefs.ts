@@ -1,6 +1,6 @@
-import { gql } from "@apollo/client";
+import { DocumentNode, gql } from "@apollo/client";
 
-export const typeDefs = gql`
+export const typeDefs: DocumentNode = gql`
   enum PromptType {
     """
     Denotes the types of Prompt for the 'type' property

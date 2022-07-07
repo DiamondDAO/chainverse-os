@@ -1,6 +1,6 @@
-import { gql } from "@apollo/client";
+import { DocumentNode, gql } from "@apollo/client";
 
-export const GET_NOTES = gql`
+export const GET_NOTES: DocumentNode = gql`
   query Notes($where: WalletWhere) {
     wallets(where: $where) {
       blocks {
@@ -26,7 +26,7 @@ export const GET_NOTES = gql`
   }
 `;
 
-export const GET_ALL_NOTES = gql`
+export const GET_ALL_NOTES: DocumentNode = gql`
   query Notes {
     notes {
       text
@@ -47,7 +47,7 @@ export const GET_ALL_NOTES = gql`
   }
 `;
 
-export const GET_PARTNERSHIPS = gql`
+export const GET_PARTNERSHIPS: DocumentNode = gql`
   query Partnerships($where: WalletWhere) {
     wallets(where: $where) {
       blocks {
@@ -74,7 +74,7 @@ export const GET_PARTNERSHIPS = gql`
   }
 `;
 
-export const GET_ALL_PARTNERSHIPS = gql`
+export const GET_ALL_PARTNERSHIPS: DocumentNode = gql`
   query Partnerships {
     partnerships {
       text
@@ -96,7 +96,7 @@ export const GET_ALL_PARTNERSHIPS = gql`
   }
 `;
 
-export const GET_ALL_BLOCKS = gql`
+export const GET_ALL_BLOCKS: DocumentNode = gql`
   query Wallets($where: WalletWhere) {
     wallets(where: $where) {
       blocks {
@@ -142,7 +142,7 @@ export const GET_ALL_BLOCKS = gql`
 `;
 
 
-export const GET_BLOCK_DATA = gql`
+export const GET_BLOCK_DATA: DocumentNode = gql`
   query Notes($where: NoteWhere) {
     notes(where: $where) {
       text
@@ -164,7 +164,7 @@ export const GET_BLOCK_DATA = gql`
   }
 `;
 
-export const GET_TAGS_AND_ENTITIES = gql`
+export const GET_TAGS_AND_ENTITIES: DocumentNode = gql`
   query Tags {
     tags {
       tag
@@ -175,7 +175,7 @@ export const GET_TAGS_AND_ENTITIES = gql`
   }
 `;
 
-export const GET_ENTITIES_DATA = gql`
+export const GET_ENTITIES_DATA: DocumentNode = gql`
   query Entities($where: EntityWhere) {
     entities(where: $where) {
       id
@@ -200,7 +200,7 @@ export const GET_ENTITIES_DATA = gql`
   }
 `;
 
-export const GET_TAG_DATA = gql`
+export const GET_TAG_DATA: DocumentNode = gql`
   query Tags($where: TagWhere) {
     tags(where: $where) {
       uuid
@@ -213,7 +213,7 @@ export const GET_TAG_DATA = gql`
   }
 `;
 
-export const GET_ALL_CREATED = gql`
+export const GET_ALL_CREATED: DocumentNode = gql`
   query Wallets($where: WalletWhere) {
     wallets(where: $where) {
       blocks {
@@ -278,13 +278,13 @@ export const GET_ALL_CREATED = gql`
   }
 `;
 
-export const GET_WALLET_COUNT = gql`
+export const GET_WALLET_COUNT: DocumentNode = gql`
   query Query($where: WalletWhere) {
     walletsCount(where: $where)
   }
 `;
 
-export const GET_PROMPT_INFO = gql`
+export const GET_PROMPT_INFO: DocumentNode = gql`
   query Prompts($promptWhere: PromptWhere, $blockWhere: BlockWhere) {
     prompts(where: $promptWhere) {
       text
@@ -300,7 +300,7 @@ export const GET_PROMPT_INFO = gql`
   }
 `;
 
-export const GET_SANDBOX = gql`
+export const GET_SANDBOX: DocumentNode = gql`
   query Sandboxes($where: SandboxWhere) {
     sandboxes(where: $where) {
       name
@@ -352,7 +352,7 @@ export const GET_SANDBOX = gql`
   }
 `;
 
-export const GET_WORKSPACES = gql`
+export const GET_WORKSPACES: DocumentNode = gql`
   query Query {
     workspaces {
       uuid
@@ -404,7 +404,7 @@ export const GET_WORKSPACE_OWNED = gql`
   }
 `;
 
-export const GET_WORKSPACE = gql`
+export const GET_WORKSPACE: DocumentNode = gql`
   query Query($where: WorkspaceWhere) {
     workspaces(where: $where) {
       name
