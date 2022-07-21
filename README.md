@@ -1,3 +1,54 @@
+# Chainverse OS
+
+Chainverse OS is a system of components to build collective graph-based applications of blockchain-related content. This open source project was designed after many months of user feedback and Web3 data analysis performed by contributors to Diamond DAO.
+
+## Collective knowledge
+Recently a wave of personal knowledge management software like Roam, Obsidian, and Logseq has come onto the market. All of these are fantastic tools-for-thought, each with their own features and UX. Each tool allows users to quickly build personalized document networks by linking "blocks" of text within one's workspace.
+
+However, what is missing from each of these systems is truly global "multiplayer mode." There is no global repository of information to reference, but even so, the free-form document template structure makes it difficult for multiple users to reference common concepts if the text or wording is even slightly different.
+
+*Insert Example*
+
+## Enter Chainverse
+
+Chainverse OS contains modular React components to create and display data model templates so that everyone in the Chainverse ecosystem can build upon each other's knowledge. Imagine a world where we all speak the same language and can communicate effortlessly; this is Chainverse OS.
+
+## Use Cases
+
+- Search and discovery applications
+- Network-based analytics and data science
+- Knowledge management of distributed teams
+- Dashboards and reporting of networks
+
+# Reference
+
+Components in Chainverse OS are designed to interact with `Block` data. Blocks are nodes in a graph with defined properties and relationships between other nodes. 
+
+Components are hosted on `npm` and can be imported into a React project like any other hosted module.
+
+`import { Search } from @chainverse/os`
+
+## Blocks
+
+Currently we have three `Block` types:
+- `Entity` - the *noun* of Chainverse; a person, place, or thing
+- `Note` - for writing short free-form text and linking or tagging other `Blocks`
+- `Partnership` - designates a special kind of relation between 
+
+Data templates are in the [type definitions](./src/services/Apollo/typedefs.ts) file.
+
+## Components
+
+- [`Search`](./src/components/SearchOS/)
+
+## Technology
+
+Chainverse OS is designed around the GRAND stack:
+- **G**raphQL
+- **R**eact (though we use Next.js framework built on React)
+- **A**pollo
+- **N**eo4j **D**atabase
+
 # TSDX React User Guide
 
 Congrats! You just saved yourself hours of work by bootstrapping this project with TSDX. Let’s get you oriented with what’s here and how to use it.
