@@ -27,7 +27,7 @@ const SearchComponent: FC<SearchOSProps> = (
   props: SearchOSProps
 ): JSX.Element => {
   // graphql
-  const { data: notesData, loading: loadingNotes } = useQuery(GET_ALL_CREATED);
+  const { data: notesData } = useQuery(GET_ALL_CREATED);
   const { data: tagAndEntitiesData, loading: loadingEntityTag } = useQuery(
     GET_TAGS_AND_ENTITIES
   );
