@@ -148,8 +148,7 @@ const SearchComponent: FC<SearchOSProps> = (
     }
   };
 
-  const isLoading =
-    loadingNotes || loadingEntityTag || loadingEntity || loadingTag;
+  const isLoading = loadingEntityTag || loadingEntity || loadingTag;
 
   const classActive = 'bg-[#95438d] text-white';
   return (
