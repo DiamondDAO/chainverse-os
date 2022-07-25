@@ -5,14 +5,14 @@ import SearchComponent from './SearchOS.component';
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   // uri: 'http://localhost:3000/api/graphql',
-  uri: '/api/graphql',
+  uri: 'http://staging.chainverse.diamonds/api/graphql',
 });
 export interface SearchOSProps extends HTMLAttributes<HTMLDivElement> {
   value: string;
   placeholder: string;
   onChange?: any;
-  onChangeType?: any;
-  onEnter?: any;
+  onChangeType: any;
+  onEnter: any;
   onFocus?: any;
 }
 

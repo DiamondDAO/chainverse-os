@@ -121,7 +121,7 @@ const SearchComponent: FC<SearchOSProps> = (
   }
   const handleOnChangeType = (type: SearchTypes) => {
     setSearchType(type);
-    props.onChangeType?.({
+    props.onChangeType({
       searchType: type,
       entity: entityResponse,
       tags: tagresponse,
@@ -129,7 +129,6 @@ const SearchComponent: FC<SearchOSProps> = (
     });
   };
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-    //TODO: apply debounce
     const value = e.target.value;    
     setTerm(value);
     props.onChange?.(value);
@@ -139,7 +138,7 @@ const SearchComponent: FC<SearchOSProps> = (
       if (term.length > 0) {
         setShowTypeFilter(true);
       }
-      props.onEnter?.({
+      props.onEnter({
         searchType,
         entity: entityResponse,
         tags: tagresponse,
