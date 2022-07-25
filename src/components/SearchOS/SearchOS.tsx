@@ -10,10 +10,10 @@ const client = new ApolloClient({
 export interface SearchOSProps extends HTMLAttributes<HTMLDivElement> {
   value: string;
   placeholder: string;
-  onChange: any;
-  onChangeType: any;
-  onEnter: any;
-  onFocus: any;
+  onChange?: any;
+  onChangeType?: any;
+  onEnter?: any;
+  onFocus?: any;
 }
 
 export const SearchOS: FC<SearchOSProps> = (props: SearchOSProps) => {
