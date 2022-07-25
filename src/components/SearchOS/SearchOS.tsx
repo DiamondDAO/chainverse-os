@@ -4,8 +4,9 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import SearchComponent from './SearchOS.component';
 const client = new ApolloClient({
   cache: new InMemoryCache(),
+  uri: 'http://staging.chainverse.diamonds/api/graphql',
   // uri: 'http://localhost:3000/api/graphql',
-  uri: '/api/graphql',
+  // uri: '/api/graphql',
 });
 export interface SearchOSProps extends HTMLAttributes<HTMLDivElement> {
   value: string;
