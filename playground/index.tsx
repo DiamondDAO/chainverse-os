@@ -10,7 +10,7 @@ const App = () => {
     <div className="mx-auto w-[70%] space-y-5">
       <SearchOS
         value="test"
-        onChange={e => console.log(e)}
+        // onChange={e => console.log(e)}
         onChangeType={e => setData(e)}
         onEnter={e => setData(e)}
         onFocus={e => console.log(e)}
