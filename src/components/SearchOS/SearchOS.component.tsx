@@ -117,11 +117,11 @@ const SearchComponent: FC<SearchOSProps> = (
 
   // handlers
   const handleOnfocus = () => {
-    props.onFocus()
+    props?.onFocus()
   }
   const handleOnChangeType = (type: SearchTypes) => {
     setSearchType(type);
-    props.onChangeType({
+    props?.onChangeType({
       searchType: type,
       entity: entityResponse,
       tags: tagresponse,
@@ -132,14 +132,14 @@ const SearchComponent: FC<SearchOSProps> = (
     //TODO: apply debounce
     const value = e.target.value;    
     setTerm(value);
-    props.onChange(value);
+    props?.onChange(value);
   };
   const handleOnKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       if (term.length > 0) {
         setShowTypeFilter(true);
       }
-      props.onEnter({
+      props?.onEnter({
         searchType,
         entity: entityResponse,
         tags: tagresponse,
