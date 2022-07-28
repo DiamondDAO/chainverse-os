@@ -2,21 +2,23 @@ import React, { FC, HTMLAttributes } from 'react';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
 import SearchComponent from './SearchOS.component';
-const client = new ApolloClient({
+import { useSearchOSClient } from '../../hooks/useSearchOSClient';
+const getClient = (uri: string) => new ApolloClient({
   cache: new InMemoryCache(),
-  // uri: 'http://localhost:3000/api/graphql',
-  uri: 'http://staging.chainverse.diamonds/api/graphql',
+  uri,
 });
 export interface SearchOSProps extends HTMLAttributes<HTMLDivElement> {
   value: string;
   placeholder: string;
   onChange?: any;
-  onChangeType: any;
-  onEnter: any;
+  onChangeType?: any;
+  onEnter?: any;
   onFocus?: any;
 }
 
 export const SearchOS: FC<SearchOSProps> = (props: SearchOSProps) => {
+  const { backendURI } = useSearchOSClient()
+  const client = getClient(backendURI)
   return (
     <>
       <ApolloProvider client={client}>

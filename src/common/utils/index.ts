@@ -9,3 +9,9 @@ export const filterUniqueObjects = (objectArray: any[], key: string) => {
     }
   });
 };
+
+export const convertToUniqueArray = (objectArray: any[] = [], key: string) => {
+  const uniqueValues = new Set(objectArray.map((i: any) => i[key]))
+  //@ts-ignore
+  return [...uniqueValues];
+};

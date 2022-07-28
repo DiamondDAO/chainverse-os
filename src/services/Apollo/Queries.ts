@@ -454,3 +454,34 @@ export const GET_WORKSPACE: DocumentNode = gql`
     }
   }
 `;
+
+export const GET_SEARCH_ALL: DocumentNode = gql`
+  query FuzzyChainversePortalSearch($searchString: String) {
+    fuzzyChainversePortalSearch(searchString: $searchString) {
+      ...on Note {
+        __typename
+        uuid
+        text
+      }
+      ...on Partnership {
+        __typename
+        uuid
+        text
+      }
+      ...on Response {
+        __typename      
+        uuid
+        text
+      }
+      ...on Proposal {
+        __typename
+        id
+        body
+        entity {
+          uuid
+          name
+        }
+      }
+    }
+  }
+`
