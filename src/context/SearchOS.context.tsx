@@ -7,7 +7,7 @@ export type SearchOSContextState = {
   data?: any;
   setLoading?: (value: boolean) => void;
   setData?: (data: any) => void;
-  children: React.ReactNode
+  children: React.ReactNode;
 };
 
 //context
@@ -17,7 +17,7 @@ export const SearchOSClientContext = createContext<
 SearchOSClientContext.displayName = 'SearchOSContext';
 
 //provider
-export const SearchOSClientProvider = (props: SearchOSContextState)=> {
+const SearchOSClientProvider = (props: SearchOSContextState) => {
   const { backendURI, children } = props;
   const [loading, setLoading] = useState<boolean | undefined>();
   const [data, setData] = useState();
@@ -30,11 +30,13 @@ export const SearchOSClientProvider = (props: SearchOSContextState)=> {
     data,
     setLoading,
     setData,
-    children
+    children,
   };
   return (
-      <SearchOSClientContext.Provider value={propsValue}>
-        {children}
-      </SearchOSClientContext.Provider>
+    <SearchOSClientContext.Provider value={propsValue}>
+      {children}
+    </SearchOSClientContext.Provider>
   );
 };
+
+export default SearchOSClientProvider

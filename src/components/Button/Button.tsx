@@ -76,7 +76,7 @@ export const Button = (props: ButtonProps) => {
 		className,
 	);
 
-	const content = (
+	const content = () => (
 		<>
 			{leftIcon && <span className="mr-1 button-icon-wrapper">{leftIcon}</span>}
 
@@ -99,7 +99,7 @@ export const Button = (props: ButtonProps) => {
 			...rest,
 		};
 
-		return <As {...asProps}>{content}</As>;
+		return <As {...asProps}>{content()}</As>;
 	}
 
 	const buttonProps = {
@@ -111,7 +111,7 @@ export const Button = (props: ButtonProps) => {
 
 	return (
 		<button {...buttonProps}>
-			{content}
+			{content()}
 
 			{isLoading && (
 				<span className="absolute inset-0 flex items-center justify-center">

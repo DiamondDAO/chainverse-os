@@ -1,4 +1,6 @@
 // context
+import SearchOSClientProvider from './context/SearchOS.context'
+export {SearchOSClientProvider as default}
 export * from './context/SearchOS.context'
 
 // components

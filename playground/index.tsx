@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import * as ReactDOM from 'react-dom';
-import { SearchOS, SearchOSClientProvider, useSearchOSClient } from '../src/index';
+import SearchOSClientProvider, { SearchOS, useSearchOSClient } from '../src/index';
 import ReactJson from 'react-json-view';
 import '../dist/chainverse-os.css';
 
