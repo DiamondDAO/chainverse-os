@@ -1,4 +1,4 @@
-import React, { createContext, FC, useState } from 'react';
+import React, { createContext, useState } from 'react';
 
 // type
 export type SearchOSContextState = {
