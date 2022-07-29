@@ -1,22 +1,43 @@
 import React, { useState } from 'react';
 import * as ReactDOM from 'react-dom';
-import { SearchOS } from '../src/index';
+import SearchOSClientProvider, {
+  SearchOS,
+  useSearchOSClient,
+} from '../src/index';
 import ReactJson from 'react-json-view';
 import '../dist/chainverse-os.css';
 
-const App = () => {
-  const [data, setData] = useState({});
+const SearchComponent = () => {
+  const { data, loading, fetchMore } = useSearchOSClient();
+
+  console.log('Search::', { data, loading, fetchMore });
+  const handleMore = async () => {
+    await fetchMore?.(20);
+  };
   return (
-    <div className="mx-auto w-[70%] space-y-5">
+    <>
       <SearchOS
         value="test"
         // onChange={e => console.log(e)}
-        onChangeType={e => setData(e)}
-        onEnter={e => setData(e)}
         onFocus={e => console.log(e)}
         placeholder="placeholder"
       />
+      <br></br>
+      <button onClick={handleMore}>More</button>
       <ReactJson src={data} />
+    </>
+  );
+};
+
+const App = () => {
+  const backendURI = 'http://localhost:3000/api/graphql';
+  // const backendURI = 'http://staging.chainverse.diamonds/api/graphql'
+
+  return (
+    <div className="mx-auto w-[70%] space-y-5">
+      <SearchOSClientProvider backendURI={backendURI}>
+        <SearchComponent />
+      </SearchOSClientProvider>
     </div>
   );
 };
