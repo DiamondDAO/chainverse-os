@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react';
+import { FetchMore } from '../components/SearchOS/SearchOS.component';
 
 // type
 export type SearchOSContextState = {
@@ -7,7 +8,7 @@ export type SearchOSContextState = {
   data?: any;
   setLoading?: (value: boolean) => void;
   setData?: (data: any) => void;
-  fetchMore?: (limit?: number) => Promise<void>;
+  fetchMore?: (settings?: FetchMore) => Promise<void>;
   setFetchMore?: any;
   children: React.ReactNode;
 };
