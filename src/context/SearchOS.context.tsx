@@ -7,6 +7,8 @@ export type SearchOSContextState = {
   data?: any;
   setLoading?: (value: boolean) => void;
   setData?: (data: any) => void;
+  fetchMore?: (limit?: number) => Promise<void>;
+  setFetchMore?: any;
   children: React.ReactNode;
 };
 
@@ -21,6 +23,7 @@ const SearchOSClientProvider = (props: SearchOSContextState) => {
   const { backendURI, children } = props;
   const [loading, setLoading] = useState<boolean | undefined>();
   const [data, setData] = useState();
+  const [fetchMore, setFetchMore] = useState();
   // Handlers
 
   // Props
@@ -31,6 +34,8 @@ const SearchOSClientProvider = (props: SearchOSContextState) => {
     setLoading,
     setData,
     children,
+    fetchMore,
+    setFetchMore,
   };
   return (
     <SearchOSClientContext.Provider value={propsValue}>
@@ -39,4 +44,4 @@ const SearchOSClientProvider = (props: SearchOSContextState) => {
   );
 };
 
-export default SearchOSClientProvider
+export default SearchOSClientProvider;

@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import * as ReactDOM from 'react-dom';
-import SearchOSClientProvider, { SearchOS, useSearchOSClient } from '../src/index';
+import SearchOSClientProvider, {
+  SearchOS,
+  useSearchOSClient,
+} from '../src/index';
 import ReactJson from 'react-json-view';
 import '../dist/chainverse-os.css';
 
 const SearchComponent = () => {
-  const { data, loading } = useSearchOSClient()
+  const { data, loading, fetchMore } = useSearchOSClient();
 
-  console.log('Search::', {data, loading});
+  console.log('Search::', { data, loading, fetchMore });
+  const handleMore = async () => {
+    await fetchMore?.(20);
+  };
   return (
     <>
       <SearchOS
@@ -16,6 +22,8 @@ const SearchComponent = () => {
         onFocus={e => console.log(e)}
         placeholder="placeholder"
       />
+      <br></br>
+      <button onClick={handleMore}>More</button>
       <ReactJson src={data} />
     </>
   );

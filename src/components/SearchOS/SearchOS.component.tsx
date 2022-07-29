@@ -1,4 +1,4 @@
-import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
+import React, { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react';
 import { FC } from 'react';
 import { useApolloClient } from '@apollo/client';
 import { SearchOSProps } from './SearchOS';
@@ -10,15 +10,31 @@ export enum SearchTypes {
   Tags = 'tags',
   Entities = 'entities',
 }
-
 const SearchComponent: FC<SearchOSProps> = (
   props: SearchOSProps
 ): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState('');
-  const {setData, loading, setLoading } = useSearchOSClient()
+  const [skip, setSkip] = useState(0);
+  const [localLimit, _] = useState(10);
+  const {
+    setData,
+    loading,
+    setLoading,
+    data: dataStored,
+    setFetchMore,
+  } = useSearchOSClient();
 
   // graphql
   const client = useApolloClient();
+
+
+  useEffect(() => {
+    if (searchTerm.length > 0) {
+      setFetchMore(() => handleLoadData)
+    }
+  
+  }, [searchTerm, skip, localLimit, dataStored])
+  
 
   // handlers
   const handleOnfocus = () => {
@@ -29,39 +45,39 @@ const SearchComponent: FC<SearchOSProps> = (
     setSearchTerm(value);
     props.onChange?.(value);
   };
-  const handleOnKeyPress = async (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      if (searchTerm.length > 0) {
-        setLoading?.(true);
-        //TODO: Review this lazyQuery issue
-        //https://stackoverflow.com/questions/57499553/is-it-possible-to-prevent-uselazyquery-queries-from-being-re-fetched-on-compon
-        const { data } = await client.query({
-          query: GET_SEARCH_ALL,
-          variables: { searchString: searchTerm },
-        });
-        setLoading?.(false);
-        setData?.(data.fuzzyChainversePortalSearch);
-      }
-    }
-  };
 
-  const handleOnSearch = async() => {
+  async function handleLoadData(limit?: number) {
     if (searchTerm.length > 0) {
+      const currentLimit = limit || localLimit
       setLoading?.(true);
+      //TODO: Review this lazyQuery issue
+      //https://stackoverflow.com/questions/57499553/is-it-possible-to-prevent-uselazyquery-queries-from-being-re-fetched-on-compon
       const { data } = await client.query({
         query: GET_SEARCH_ALL,
-        variables: { searchString: searchTerm },
+        variables: {
+          searchString: searchTerm,
+          skip,
+          limit: currentLimit,
+        },
       });
+      const newSkip = skip + currentLimit
+      const currentData = dataStored || []
+      const newData = currentData.concat(data.fuzzyChainversePortalSearch)
+      setSkip(newSkip);
       setLoading?.(false);
-      setData?.(data.fuzzyChainversePortalSearch);
+      setData?.([...newData]);
     }
   }
-
+  const handleOnKeyPress = async (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleLoadData();
+    }
+  };
 
   return (
     <div className="flex bg-white flex justify-center items-center space-x-2 w-[100%]">
       <div className="flex border rounded items-center p-4 shadow flex-grow shadow-lg">
-        <span className='font-bold text-gray-700 text-2xl'>Find</span>
+        <span className="font-bold text-gray-700 text-2xl">Find</span>
         <input
           type="text"
           value={searchTerm}
@@ -71,7 +87,9 @@ const SearchComponent: FC<SearchOSProps> = (
           className="border-none w-[100%]"
           placeholder="Start with a search for any keyword, community name, or user"
         />
-        <Button variant='primary' isLoading={loading} onClick={handleOnSearch}>Search</Button>
+        <Button variant="primary" isLoading={loading} onClick={() => handleLoadData}>
+          Search
+        </Button>
       </div>
     </div>
   );

@@ -456,8 +456,8 @@ export const GET_WORKSPACE: DocumentNode = gql`
 `;
 
 export const GET_SEARCH_ALL: DocumentNode = gql`
-  query FuzzyChainversePortalSearch($searchString: String) {
-    fuzzyChainversePortalSearch(searchString: $searchString) {
+  query FuzzyChainversePortalSearch($searchString: String, $skip: Int, $limit: Int) {
+    fuzzyChainversePortalSearch(searchString: $searchString, skip: $skip, limit: $limit) {
       ...on Note {
         __typename
         uuid

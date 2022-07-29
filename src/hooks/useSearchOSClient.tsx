@@ -6,7 +6,7 @@ export const useSearchOSClient = () => {
   if (context === undefined) {
     throw new Error(
       'useSearchOSClient must be used within a <SearchOSClientProvider />'
-      );
-    }
-  return context
+    );
+  }
+  return context;
 };
