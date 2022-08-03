@@ -19,7 +19,7 @@ const SearchComponent: FC<SearchOSProps> = (
 ): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState('');
   const [skip, setSkip] = useState(0);
-  const [localLimit] = useState(50);
+  const localLimit = props.limit || 50
   const {
     setData,
     loading,

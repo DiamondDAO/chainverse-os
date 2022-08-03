@@ -6,6 +6,7 @@ import SearchOSClientProvider, {
 } from '../src/index';
 import ReactJson from 'react-json-view';
 import '../dist/chainverse-os.css';
+import { Button } from '../src/components/Button';
 
 const SearchComponent = () => {
   const { data, loading, fetchMore } = useSearchOSClient();
@@ -21,9 +22,10 @@ const SearchComponent = () => {
         // onChange={e => console.log(e)}
         onFocus={e => console.log(e)}
         placeholder="placeholder"
+        limit={30}
       />
       <br></br>
-      <button onClick={handleMore}>More</button>
+      <Button variant='primary' isLoading={loading} onClick={(handleMore)}>Load More</Button>
       <ReactJson src={data} />
     </>
   );

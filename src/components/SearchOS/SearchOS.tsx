@@ -14,6 +14,7 @@ export interface SearchOSProps extends HTMLAttributes<HTMLDivElement> {
   onChangeType?: any;
   onEnter?: any;
   onFocus?: any;
+  limit?: number;
 }
 
 export const SearchOS: FC<SearchOSProps> = (props: SearchOSProps) => {
