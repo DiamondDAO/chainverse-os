@@ -10,6 +10,10 @@ export enum SearchTypes {
   Tags = 'tags',
   Entities = 'entities',
 }
+export type FetchMore = {
+  limit?: number;
+  reset?: boolean;
+};
 const SearchComponent: FC<SearchOSProps> = (
   props: SearchOSProps
 ): JSX.Element => {
@@ -27,14 +31,11 @@ const SearchComponent: FC<SearchOSProps> = (
   // graphql
   const client = useApolloClient();
 
-
   useEffect(() => {
     if (searchTerm.length > 0) {
-      setFetchMore(() => handleLoadData)
+      setFetchMore(() => handleLoadData);
     }
-  
-  }, [searchTerm, skip, localLimit, dataStored])
-  
+  }, [searchTerm, skip, localLimit, dataStored]);
 
   // handlers
   const handleOnfocus = () => {
@@ -46,9 +47,12 @@ const SearchComponent: FC<SearchOSProps> = (
     props.onChange?.(value);
   };
 
-  async function handleLoadData(limit?: number) {
+  async function handleLoadData(settings?: FetchMore) {
+    const { limit, reset } = settings || {};
     if (searchTerm.length > 0) {
-      const currentLimit = limit || localLimit
+      const currentLimit = limit || localLimit;
+      const currentData = reset ? [] : dataStored;
+      const currentSkip = reset ? 0 : skip;
       setLoading?.(true);
       //TODO: Review this lazyQuery issue
       //https://stackoverflow.com/questions/57499553/is-it-possible-to-prevent-uselazyquery-queries-from-being-re-fetched-on-compon
@@ -56,13 +60,12 @@ const SearchComponent: FC<SearchOSProps> = (
         query: GET_SEARCH_ALL,
         variables: {
           searchString: searchTerm,
-          skip,
+          skip: currentSkip,
           limit: currentLimit,
         },
       });
-      const newSkip = skip + currentLimit
-      const currentData = dataStored || []
-      const newData = currentData.concat(data.fuzzyChainversePortalSearch)
+      const newSkip = currentSkip + currentLimit;
+      const newData = currentData.concat(data.fuzzyChainversePortalSearch);
       setSkip(newSkip);
       setLoading?.(false);
       setData?.([...newData]);
@@ -70,8 +73,11 @@ const SearchComponent: FC<SearchOSProps> = (
   }
   const handleOnKeyPress = async (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      handleLoadData();
+      handleLoadData({ reset: true });
     }
+  };
+  const handleOnSearch = () => {
+    handleLoadData({ reset: true });
   };
 
   return (
@@ -87,7 +93,7 @@ const SearchComponent: FC<SearchOSProps> = (
           className="border-none w-[100%]"
           placeholder="Start with a search for any keyword, community name, or user"
         />
-        <Button variant="primary" isLoading={loading} onClick={() => handleLoadData}>
+        <Button variant="primary" isLoading={loading} onClick={handleOnSearch}>
           Search
         </Button>
       </div>

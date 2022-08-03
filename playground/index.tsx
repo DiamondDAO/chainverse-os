@@ -12,7 +12,7 @@ const SearchComponent = () => {
 
   console.log('Search::', { data, loading, fetchMore });
   const handleMore = async () => {
-    await fetchMore?.(20);
+    await fetchMore?.({ limit: 20 });
   };
   return (
     <>
