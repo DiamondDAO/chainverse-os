@@ -19,7 +19,7 @@ const SearchComponent: FC<SearchOSProps> = (
 ): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState('');
   const [skip, setSkip] = useState(0);
-  const localLimit = props.limit || 50
+  const localLimit = props.limit || 50;
   const {
     setData,
     loading,
@@ -81,22 +81,20 @@ const SearchComponent: FC<SearchOSProps> = (
   };
 
   return (
-    <div className="flex bg-white flex justify-center items-center space-x-2 w-[100%]">
-      <div className="flex border rounded items-center p-4 shadow flex-grow shadow-lg">
-        <span className="font-bold text-gray-700 text-2xl">Find</span>
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={handleOnChange}
-          onKeyPress={handleOnKeyPress}
-          onFocus={handleOnfocus}
-          className="border-none w-[100%]"
-          placeholder="Start with a search for any keyword, community name, or user"
-        />
-        <Button variant="primary" isLoading={loading} onClick={handleOnSearch}>
-          Search
-        </Button>
-      </div>
+    <div className="flex border rounded bg-white items-center p-4 shadow shadow-lg space-x-2 w-[100%]">
+      <span className="font-bold text-gray-600 text-2xl">Find</span>
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={handleOnChange}
+        onKeyPress={handleOnKeyPress}
+        onFocus={handleOnfocus}
+        className="border rounded flex-grow border-gray-200 p-3"
+        placeholder="Start with a search for any keyword, community name, or user"
+      />
+      <Button variant="primary" isLoading={loading} onClick={handleOnSearch}>
+        Search
+      </Button>
     </div>
   );
 };
