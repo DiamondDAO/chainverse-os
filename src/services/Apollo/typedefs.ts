@@ -14,19 +14,17 @@ export const typeDefs: DocumentNode = gql`
     TODO: Should this be restricted
     """
     uuid: ID! @id(autogenerate: true)
-    name: String! @unique #under assumption name for entities are unique
+    name: String @unique #under assumption name for entities are unique
     id: String @unique
+    minScore: Float
+    network: Float
+    onlyMembers: String
+    symbol: String
+    address: String @unique
     avatar: String
-    onChain: Boolean
-    network: String @unique
-    address: Wallet @relationship(type: "HAS_WALLET", direction: OUT)
-    addressSource: Source @relationship(type: "HAS_SOURCE", direction: OUT)
-    twitter: AccountTwitter @relationship(type: "HAS_ACCOUNT", direction: OUT)
-    discord: String @unique
-    github: String @unique
-    website: String @unique
-    createdAt: DateTime! @timestamp
-    wallet: Wallet! @relationship(type: "CREATED", direction: IN)
+    about: String
+    proposals: [Proposal] @relationship(type: "HAS_PROPOSAL", direction: OUT)
+    notes: [Note] @relationship(type: "REFERENCES", direction: IN)
   }
 
   interface Account {
@@ -150,13 +148,24 @@ export const typeDefs: DocumentNode = gql`
     entity: Entity @relationship(type: "HAS_PROPOSAL", direction: IN)
   }
   
-  union SearchNodes = Note | Partnership | Response | Proposal
+  union SearchNodes = Note | Entity | Proposal
+
   type Query {
     fuzzyChainversePortalSearch(searchString: String, skip: Int, limit: Int): [SearchNodes] @cypher(
       statement: """
         CALL db.index.fulltext.queryNodes(
           'chainversePortalSearchIndex', $searchString+'~')
-        YIELD node, score RETURN node order by score desc
+        YIELD node as searchResult, score 
+        WHERE score > 0.9
+        WITH searchResult
+        CALL apoc.path.subgraphNodes(searchResult, {
+          relationshipFilter: 'REFERENCES|HAS_PROPOSAL',
+          labelFilter: '>Entity',
+            minLevel: 1,
+            maxLevel: 2
+        })
+        YIELD node as r
+        RETURN r
         SKIP $skip LIMIT $limit
       """
     )

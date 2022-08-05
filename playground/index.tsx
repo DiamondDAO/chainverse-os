@@ -19,13 +19,13 @@ const SearchComponent = () => {
     <>
       <SearchOS
         value="test"
-        // onChange={e => console.log(e)}
         onFocus={e => console.log(e)}
         placeholder="placeholder"
         limit={30}
       />
       <br></br>
       <Button variant='primary' isLoading={loading} onClick={(handleMore)}>Load More</Button>
+      {/* @ts-ignore */}
       <ReactJson src={data} />
     </>
   );
