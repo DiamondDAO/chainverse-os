@@ -456,32 +456,18 @@ export const GET_WORKSPACE: DocumentNode = gql`
 `;
 
 export const GET_SEARCH_ALL: DocumentNode = gql`
-  query FuzzyChainversePortalSearch($searchString: String, $skip: Int, $limit: Int) {
-    fuzzyChainversePortalSearch(searchString: $searchString, skip: $skip, limit: $limit) {
-      ...on Note {
-        __typename
-        uuid
-        text
+query FuzzyChainversePortalSearch($searchString: String, $skip: Int, $limit: Int) {
+  fuzzyChainversePortalSearch(searchString: $searchString, skip: $skip, limit: $limit) {
+    ... on Entity {
+      uuid
+      name
+      notesAggregate {
+        count
       }
-      ...on Partnership {
-        __typename
-        uuid
-        text
-      }
-      ...on Response {
-        __typename      
-        uuid
-        text
-      }
-      ...on Proposal {
-        __typename
-        id
-        body
-        entity {
-          uuid
-          name
-        }
+      proposalsAggregate {
+        count
       }
     }
   }
+}
 `

@@ -18,12 +18,12 @@ const SearchComponent = () => {
     <>
       <SearchOS
         value="test"
-        // onChange={e => console.log(e)}
         onFocus={e => console.log(e)}
         placeholder="placeholder"
       />
       <br></br>
       <button onClick={handleMore}>More</button>
+      {/* @ts-ignore */}
       <ReactJson src={data} />
     </>
   );
