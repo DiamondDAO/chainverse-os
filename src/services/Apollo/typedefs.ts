@@ -23,8 +23,6 @@ export const typeDefs: DocumentNode = gql`
     address: String @unique
     avatar: String
     onChain: Boolean
-    network: String @unique
-    address: Wallet @relationship(type: "HAS_WALLET", direction: OUT)
     addressSource: Source @relationship(type: "HAS_SOURCE", direction: OUT)
     twitter: AccountTwitter @relationship(type: "HAS_ACCOUNT", direction: OUT)
     discord: String @unique
