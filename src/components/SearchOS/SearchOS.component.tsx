@@ -100,7 +100,7 @@ const SearchComponent: FC<SearchOSProps> = (
         variant="primary"
         isLoading={loading}
         onClick={handleOnSearch}
-        className='w-[100%] md:w-[100%] lg:w-[20%]'
+        className='w-[100%] lg:w-[20%]'
       >
         Search
       </Button>

@@ -13,6 +13,29 @@ npm install @chainverse/os
 ```
 yarn add @chainverse/os
 ```
+
+# Configuration
+## SearchOSClientProvider
+
+Receive the backendURI as property and YourSearchComponent as children  
+You <b>need</b> to wrap YourSearchComponent with SearchOSClientProvider
+## fetchMore
+Sets the number of results to get with each extra load of data
+```
+fetchMore?.({ limit: int }):
+```
+
+## SearchOS
+The <b>limit</b> property of SearchOS sets the number of results to get on the first data load.
+```
+  limit={ int }
+```
+
+## backendURI
+Connection address to the backend of your app  
+Sent as property to SearchOSClientProvider
+
+
 # Usage
 ```tsx
 import React, { useState } from 'react';
@@ -26,22 +49,22 @@ import '../dist/chainverse-os.css';
 const YourSearchComponent = () => {
   const { fetchMore } = useSearchOSClient();
   const handleMore = async () => {
-    await fetchMore?.({ limit: # });
+    await fetchMore?.({ limit: int });
   };
   return (
     <>
       <SearchOS
         placeholder="placeholder"
-        limit={ # }
+        limit={ int }
       />
     </>
   );
 };
 
 const App = () => {
-  const backendURI = 'http://YourBackendURI/api/graphql';
+  const backendURI = 'http://YourBackendURI';
   return (
-    <div className='' >
+    <div>
       <SearchOSClientProvider backendURI={backendURI}>
         <YourSearchComponent />
       </SearchOSClientProvider>
