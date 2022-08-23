@@ -38,7 +38,8 @@ const SearchComponent = () => {
 };
 
 const App = () => {
-  const backendURI = 'http://localhost:3000/api/graphql';
+  const backendURI = 'http://localhost:3000';
+  // const backendURI = 'http://localhost:3000/api/graphql';
   // const backendURI = 'http://staging.chainverse.diamonds/api/graphql'
 
   return (

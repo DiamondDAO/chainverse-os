@@ -4,6 +4,8 @@ export type AsyncStatus = 'idle' | 'resolved' | 'rejected' | 'pending'
 
 type InputActions = {
   onSuccess?: (data: any) => void
+  onStart?: () => void
+  onFinish?: () => void
   onError?: () => void
 }
 type AsyncBody = {
@@ -67,6 +69,7 @@ export function useAsync(initialState?: InputActions) {
         )
       }
       safeSetState({ status: 'pending' })
+      initialState?.onStart?.()
       try {
         const data = await promise
         setData(data)
@@ -78,6 +81,8 @@ export function useAsync(initialState?: InputActions) {
         setError(errorMsg)
         initialState?.onError?.()
         return Promise.reject(error)
+      } finally {
+        initialState?.onFinish?.()
       }
     },
     [safeSetState, setData, setError]
