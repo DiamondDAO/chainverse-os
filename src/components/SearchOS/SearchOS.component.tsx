@@ -83,18 +83,27 @@ const SearchComponent: FC<SearchOSProps> = (
   };
 
   return (
-    <div className="flex border rounded bg-white items-center p-4 shadow shadow-lg space-x-2 w-[100%]">
-      <span className="font-bold text-gray-600 text-2xl">Find</span>
-      <input
-        type="text"
-        value={searchTerm}
-        onChange={handleOnChange}
-        onKeyPress={handleOnKeyPress}
-        onFocus={handleOnfocus}
-        className="border rounded flex-grow border-gray-200 p-3"
-        placeholder="Start with a search for any keyword, community name, or user"
-      />
-      <Button variant="primary" isLoading={loading} onClick={handleOnSearch}>
+    <div className="flex border rounded bg-white items-center p-4 w-[100%] shadow shadow-lg space-y-2 lg:space-y-0 lg:space-x-2 flex-col lg:flex-row">
+      <div className='flex flex-col md:flex-row items-center w-[100%] md:space-x-2 lg:space-x-2 lg:w-[80%]'>
+        <span className="font-bold text-gray-600 text-2xl w-[100%] text-left md:w-auto">
+          Find
+        </span>
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={handleOnChange}
+          onKeyPress={handleOnKeyPress}
+          onFocus={handleOnfocus}
+          className="border rounded flex-grow border-gray-200 p-3 w-[100%] md:flex-grow"
+          placeholder="Start with a search for any keyword, community name, or user"
+        />
+      </div>
+      <Button
+        variant="primary"
+        isLoading={loading}
+        onClick={handleOnSearch}
+        className='w-[100%] lg:w-[20%]'
+      >
         Search
       </Button>
     </div>
