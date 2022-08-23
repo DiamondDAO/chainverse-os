@@ -15,16 +15,22 @@ const SearchComponent = () => {
   const handleMore = async () => {
     await fetchMore?.({ limit: 20 });
   };
+  const handleOnenter = (term: string) => {
+    console.log('term:', term);
+  };
   return (
     <>
       <SearchOS
         value="test"
         onFocus={e => console.log(e)}
+        onEnter={handleOnenter}
         placeholder="placeholder"
         limit={30}
       />
       <br></br>
-      <Button variant='primary' isLoading={loading} onClick={(handleMore)}>Load More</Button>
+      <Button variant="primary" isLoading={loading} onClick={handleMore}>
+        Load More
+      </Button>
       {/* @ts-ignore */}
       <ReactJson src={data} />
     </>
@@ -32,7 +38,8 @@ const SearchComponent = () => {
 };
 
 const App = () => {
-  const backendURI = 'http://localhost:3000/api/graphql';
+  const backendURI = 'http://localhost:3000';
+  // const backendURI = 'http://localhost:3000/api/graphql';
   // const backendURI = 'http://staging.chainverse.diamonds/api/graphql'
 
   return (

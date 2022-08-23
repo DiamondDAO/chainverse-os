@@ -1,5 +1,5 @@
 {
-  "version": "0.1.11",
+  "version": "0.1.12",
   "license": "MIT",
   "name": "@chainverse/os",
   "repository": {
@@ -57,6 +57,7 @@
     "@size-limit/preset-small-lib": "^7.0.8",
     "@types/react": "^17.0.37",
     "autoprefixer": "^10.4.7",
+    "buffer": "^6.0.3",
     "husky": "^8.0.1",
     "identity-obj-proxy": "^3.0.0",
     "parcel": "^2.0.1",
@@ -66,11 +67,11 @@
     "process": "^0.11.10",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-json-view": "^1.21.3",
     "size-limit": "^7.0.8",
     "tailwindcss": "^3.1.4",
     "tsdx": "^0.14.1",
     "tslib": "^2.4.0",
-    "react-json-view": "^1.21.3",
     "typescript": "^4.7.4"
   },
   "dependencies": {
@@ -78,8 +79,9 @@
     "@heroicons/react": "^1.0.5",
     "@tailwindcss/forms": "^0.4.0",
     "@tailwindcss/typography": "^0.5.0",
-    "fuse.js": "^6.5.3",
-    "clsx": "^1.1.1"
+    "axios": "^0.27.2",
+    "clsx": "^1.1.1",
+    "fuse.js": "^6.5.3"
   },
   "jest": {
     "moduleNameMapper": {
