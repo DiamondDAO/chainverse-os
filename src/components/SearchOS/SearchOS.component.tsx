@@ -31,11 +31,11 @@ const SearchComponent: FC<SearchOSProps> = (
   // graphql
   const client = useApolloClient();
 
-  useEffect(() => {
-    if (searchTerm.length > 0) {
-      setFetchMore(() => handleLoadData);
-    }
-  }, [searchTerm, skip, localLimit, dataStored]);
+  // useEffect(() => {
+  //   if (searchTerm.length > 0) {
+  //     setFetchMore(() => handleLoadData);
+  //   }
+  // }, [searchTerm, skip, localLimit, dataStored]);
 
   // handlers
   const handleOnfocus = () => {
@@ -73,11 +73,13 @@ const SearchComponent: FC<SearchOSProps> = (
   }
   const handleOnKeyPress = async (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      handleLoadData({ reset: true });
+      // handleLoadData({ reset: true });
+      props.onEnter?.(searchTerm)
     }
   };
   const handleOnSearch = () => {
-    handleLoadData({ reset: true });
+    // handleLoadData({ reset: true });
+    props.onEnter?.(searchTerm)
   };
 
   return (
